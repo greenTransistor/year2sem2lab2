@@ -7,6 +7,8 @@ namespace Ui {
 class SimulationPresettings;
 }
 
+class Controller;
+
 class SimulationPresettings : public QWidget
 {
     Q_OBJECT
@@ -17,6 +19,9 @@ public:
 
 private:
     Ui::SimulationPresettings *ui;
+
+public:
+    friend Controller;
 };
 
 #endif // SIMULATIONPRESETTINGS_H

@@ -27,11 +27,13 @@ CONFIG += c++11
 SOURCES += \
         main.cpp \
     mainmenu.cpp \
-    simulationpresettings.cpp
+    simulationpresettings.cpp \
+    controller.cpp
 
 HEADERS += \
     mainmenu.h \
-    simulationpresettings.h
+    simulationpresettings.h \
+    controller.h
 
 FORMS += \
     mainmenu.ui \
