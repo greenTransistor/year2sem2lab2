@@ -26,13 +26,16 @@ CONFIG += c++11
 
 SOURCES += \
         main.cpp \
-    mainmenu.cpp
+    mainmenu.cpp \
+    simulationpresettings.cpp
 
 HEADERS += \
-    mainmenu.h
+    mainmenu.h \
+    simulationpresettings.h
 
 FORMS += \
-    mainmenu.ui
+    mainmenu.ui \
+    simulationpresettings.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
