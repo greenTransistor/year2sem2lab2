@@ -2,6 +2,11 @@
 # Prerequisites
 *.d
 
+# ignore files without extension (because linux executables do not depend on extension)
+*
+!/**/
+!*.*
+
 # Compiled Object files
 *.slo
 *.lo
