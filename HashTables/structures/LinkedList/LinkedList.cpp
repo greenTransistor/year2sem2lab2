@@ -21,6 +21,10 @@ void LinkedList<DataType>::free() {
 
 template<typename DataType>
 void LinkedList<DataType>::clear(bool deleteData) {
+	if (this->isEmpty()) {
+		return;
+	}
+
 	LinkedListElement<DataType>* currentElement = this->getFirstElement();
 	LinkedListElement<DataType>* nextElement;
 
@@ -53,11 +57,19 @@ DataType* LinkedList<DataType>::removeElement(LinkedListElement<DataType>* eleme
 
 template<typename DataType>
 LinkedListElement<DataType>* LinkedList<DataType>::getFirstElement() {
+	if (this->isEmpty()) {
+		throw std::logic_error("attempt to get first element of an empty list");
+	}
+
 	return this->head->next;
 }
 
 template<typename DataType>
 LinkedListElement<DataType>* LinkedList<DataType>::getLastElement() {
+	if (this->isEmpty()) {
+		throw std::logic_error("attempt to get last element of an empty list");
+	}
+
 	return this->head->prev;
 }
 

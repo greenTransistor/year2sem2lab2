@@ -76,8 +76,16 @@ TEST_CASE("LinkedList") {
 			REQUIRE(list.getFirstElement() == element1);
 			REQUIRE(list.getLastElement() == element3);
 		}
+	}
+	SECTION("errors") {
 		SECTION("removing element from empty list") {
 			REQUIRE_THROWS_AS(list.removeFirstElement(), std::logic_error);
+		}
+		SECTION("getting first element of an empty list") {
+			REQUIRE_THROWS_AS(list.getFirstElement(), std::logic_error);
+		}
+		SECTION("getting last element of an empty list") {
+			REQUIRE_THROWS_AS(list.getLastElement(), std::logic_error);
 		}
 	}
 	list.free();
