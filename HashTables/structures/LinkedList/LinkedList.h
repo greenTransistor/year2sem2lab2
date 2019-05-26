@@ -14,6 +14,7 @@ public:
 
 	void clear(bool deleteData = false);
 	LinkedListElement<DataType>* getFirstElement();
+	LinkedListElement<DataType>* getHead();
 	LinkedListElement<DataType>* getLastElement();
 	LinkedListElement<DataType>* insertBegin(DataType* data);
 	LinkedListElement<DataType>* insertEnd(DataType* data);

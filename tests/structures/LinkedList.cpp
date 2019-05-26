@@ -13,6 +13,8 @@ TEST_CASE("LinkedList") {
 		REQUIRE(element1->data == data1);
 		REQUIRE(list.getFirstElement() == element1);
 		REQUIRE(list.getLastElement() == element1);
+		REQUIRE(element1->prev == list.getHead());
+		REQUIRE(element1->next == list.getHead());
 
 		SECTION("inserting to beginning") {
 			LinkedListElement<int>* element2 = list.insertBegin(new int(2));

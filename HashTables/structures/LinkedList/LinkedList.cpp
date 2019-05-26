@@ -65,6 +65,11 @@ LinkedListElement<DataType>* LinkedList<DataType>::getFirstElement() {
 }
 
 template<typename DataType>
+LinkedListElement<DataType>* LinkedList<DataType>::getHead() {
+	return this->head;
+}
+
+template<typename DataType>
 LinkedListElement<DataType>* LinkedList<DataType>::getLastElement() {
 	if (this->isEmpty()) {
 		throw std::logic_error("attempt to get last element of an empty list");
