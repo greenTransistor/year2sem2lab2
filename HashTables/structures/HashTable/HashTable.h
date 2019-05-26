@@ -4,9 +4,10 @@
 
 #include "HashFunction.h"
 #include "HashTableElement.h"
+#include "../../trackers/ActiveElementsTracker.h"
 
 template<typename KeyType, typename DataType>
-class HashTable {
+class HashTable : public ActiveElementsTracker<KeyType, DataType> {
 protected:
 	HashFunction hashFunction;
 	int size;

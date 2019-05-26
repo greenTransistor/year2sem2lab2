@@ -62,6 +62,7 @@ LinkedListElement<HashTableElement<KeyType, DataType> >* ChainedHashTable<KeyTyp
 	LinkedListElement<HashTableElement<KeyType, DataType> >* head = this->buckets[index].getHead();
 
 	while (currentElement != head) {
+		this->recordActivity(currentElement->data);
 		if (currentElement->data->key == key) {
 			return currentElement;
 		}
@@ -79,7 +80,10 @@ void ChainedHashTable<KeyType, DataType>::initWithSize(int size) {
 
 template<typename KeyType, typename DataType>
 void ChainedHashTable<KeyType, DataType>::insert(HashTableElement<KeyType, DataType> element) {
-	this->buckets[this->getIndex(element.key)].insertBegin(element.clone());
+	HashTableElement<KeyType, DataType>* elementToInsert = element.clone();
+
+	this->buckets[this->getIndex(element.key)].insertBegin(elementToInsert);
+	this->recordActivity(elementToInsert);
 }
 
 template<typename KeyType, typename DataType>
