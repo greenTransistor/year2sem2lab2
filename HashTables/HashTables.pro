@@ -28,12 +28,32 @@ SOURCES += \
         main.cpp \
     mainmenu.cpp \
     simulationpresettings.cpp \
-    controller.cpp
+    controller.cpp \
+    structures/Queue/Queue.cpp \
+    structures/LinkedList/LinkedList.cpp \
+    structures/LinkedList/LinkedListElement.cpp \
+    structures/HashTable/ChainedHashTable.cpp \
+    structures/HashTable/ErasableHashTable.cpp \
+    structures/HashTable/HashFunction.cpp \
+    structures/HashTable/HashTable.cpp \
+    structures/HashTable/HashTableElement.cpp \
+    structures/HashTable/MutableHashTable.cpp \
+    trackers/ActiveElementsTracker.cpp
 
 HEADERS += \
     mainmenu.h \
     simulationpresettings.h \
-    controller.h
+    controller.h \
+    structures/Queue/Queue.h \
+    structures/LinkedList/LinkedList.h \
+    structures/LinkedList/LinkedListElement.h \
+    structures/HashTable/ChainedHashTable.h \
+    structures/HashTable/ErasableHashTable.h \
+    structures/HashTable/HashFunction.h \
+    structures/HashTable/HashTable.h \
+    structures/HashTable/HashTableElement.h \
+    structures/HashTable/MutableHashTable.h \
+    trackers/ActiveElementsTracker.h
 
 FORMS += \
     mainmenu.ui \

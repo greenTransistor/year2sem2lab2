@@ -1,5 +1,7 @@
 #include "LinkedList.h"
 
+#include <stdexcept>
+
 template class LinkedList<int>;
 
 template<typename DataType>

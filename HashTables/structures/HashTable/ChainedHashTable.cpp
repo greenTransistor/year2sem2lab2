@@ -1,5 +1,7 @@
 #include "ChainedHashTable.h"
 
+#include <stdexcept>
+
 template<typename KeyType, typename DataType>
 ChainedHashTable<KeyType, DataType>::ChainedHashTable(int size) {
 	this->initWithSize(size);
