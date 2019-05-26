@@ -47,6 +47,8 @@ TEST_CASE("Queue") {
 
 			REQUIRE(dequeuedData == data2);
 			REQUIRE(queue.isEmpty());
+
+			delete dequeuedData;
 		}
 	}
 	SECTION("errors") {
