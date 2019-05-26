@@ -32,7 +32,8 @@ void ChainedHashTable<KeyType, DataType>::free() {
 		LinkedListElement<HashTableElement<KeyType, DataType> >* head = this->buckets[i].getHead();
 
 		while (currentElement != head) {
-
+			delete currentElement->data->data;
+			currentElement = currentElement->next;
 		}
 
 		this->buckets[i].free();
