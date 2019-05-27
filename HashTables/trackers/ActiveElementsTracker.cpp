@@ -9,6 +9,9 @@
 #endif
 
 template<typename KeyType, typename DataType>
+const int ActiveElementsTracker<KeyType, DataType>::INDEX_IN_EMPTY_BUCKET = -1;
+
+template<typename KeyType, typename DataType>
 ActiveElementsTracker<KeyType, DataType>::~ActiveElementsTracker() {
 	this->clearActiveElementsQueue(true);
 }

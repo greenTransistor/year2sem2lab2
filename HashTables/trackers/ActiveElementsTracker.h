@@ -14,6 +14,8 @@ protected:
 	void recordActivity(std::pair<int, int>* element);
 
 public:
+	static const int INDEX_IN_EMPTY_BUCKET;
+
 	virtual ~ActiveElementsTracker();
 
 	bool activeElementsElementsAvailable();

@@ -64,6 +64,7 @@ template<typename KeyType, typename DataType>
 LinkedListElement<HashTableElement<KeyType, DataType> >* ChainedHashTable<KeyType, DataType>::findListElement(KeyType key) {
 	int bucketIndex = this->getIndex(key);
 	if (this->buckets[bucketIndex].isEmpty()) {
+		this->recordActivity(new std::pair<int, int>(bucketIndex, this->INDEX_IN_EMPTY_BUCKET));
 		return nullptr;
 	}
 
