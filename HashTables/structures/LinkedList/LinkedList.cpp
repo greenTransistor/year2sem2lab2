@@ -1,8 +1,12 @@
 #include "LinkedList.h"
 
+#include "../HashTable/HashTableElement.h"
+
 #include <stdexcept>
+#include <QString>
 
 template class LinkedList<int>;
+template class LinkedList<HashTableElement<int, QString>>;
 
 template<typename DataType>
 LinkedList<DataType>::LinkedList() {

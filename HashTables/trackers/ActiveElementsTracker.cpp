@@ -1,5 +1,9 @@
 #include "ActiveElementsTracker.h"
 
+#include <QString>
+
+template class ActiveElementsTracker<int, QString>;
+
 template<typename KeyType, typename DataType>
 bool ActiveElementsTracker<KeyType, DataType>::activeElementsElementsAvailable() {
 	return (!this->activeElementsQueue.isEmpty());

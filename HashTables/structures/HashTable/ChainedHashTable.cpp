@@ -1,6 +1,7 @@
 #include "ChainedHashTable.h"
 
 #include <stdexcept>
+#include <QString>
 
 template<typename KeyType, typename DataType>
 ChainedHashTable<KeyType, DataType>::ChainedHashTable(int size) {
@@ -98,3 +99,5 @@ void ChainedHashTable<KeyType, DataType>::remove(KeyType key) {
 
 	this->buckets[this->getIndex(key)].removeElement(element);
 }
+
+template class ChainedHashTable<int, QString>;

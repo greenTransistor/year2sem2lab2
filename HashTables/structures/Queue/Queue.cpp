@@ -1,6 +1,11 @@
 #include "Queue.h"
 
+#include "../HashTable/HashTableElement.h"
+
+#include <QString>
+
 template class Queue<int>;
+template class Queue<HashTableElement<int, QString>>;
 
 template<typename DataType>
 Queue<DataType>::Queue() {

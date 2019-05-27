@@ -3,6 +3,7 @@
 
 #include "mainmenu.h"
 #include "simulationpresettings.h"
+#include "simulationchainedhashtable.h"
 
 #include <QObject>
 
@@ -14,11 +15,20 @@ public:
 
 private slots:
     void slotCreateSimulationPresettings();
-    void slotBackToMenu();
+    void slotCreateSimulationChainedHashTable();
+    void slotBackToMenuFromSimulationPresettings();
+    void slotBackToMenuFromSimulationChainedHashTable();
+    void slotAddElementToData(HashTableElement<int, QString>* element);
 
 private:
     MainMenu* mainMenu;
     SimulationPresettings* simulationPresettings;
+    SimulationChainedHashTable* simulationChainedHashTable;
+
+    QVector<HashTableElement<int, QString>*> data;
+
+private: //methods
+    HashTableElement<int, QString>* getElementByIndex(int index);
 };
 
 #endif // CONTROLLER_H

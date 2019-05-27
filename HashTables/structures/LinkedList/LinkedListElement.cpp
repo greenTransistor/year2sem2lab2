@@ -1,6 +1,11 @@
 #include "LinkedListElement.h"
 
+#include "../HashTable/HashTableElement.h"
+
+#include <QString>
+
 template class LinkedListElement<int>;
+template class LinkedListElement<HashTableElement<int, QString>>;
 
 template<typename DataType>
 LinkedListElement<DataType>::LinkedListElement(DataType* data, LinkedListElement<DataType>* prev, LinkedListElement<DataType>* next) {
