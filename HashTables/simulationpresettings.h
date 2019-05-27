@@ -28,6 +28,7 @@ private:
 private: //methods
     HashTableElement<int, QString>* getHashTableElement();
     void addElementToTable(HashTableElement<int, QString>* element);
+    void clearInputFields();
 
 public:
     friend Controller;

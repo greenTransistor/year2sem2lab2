@@ -37,3 +37,9 @@ void SimulationPresettings::addElementToTable(HashTableElement<int, QString> *el
     ui->elementsTable->setItem(curRowsNumber, 0, new QTableWidgetItem(QString::number(element->key)));
     ui->elementsTable->setItem(curRowsNumber, 1, new QTableWidgetItem(*(element->data)));
 }
+
+void SimulationPresettings::clearInputFields()
+{
+    ui->keyInput->setText("");
+    ui->dataInput->setText("");
+}

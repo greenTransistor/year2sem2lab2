@@ -31,6 +31,7 @@ void Controller::slotCreateSimulationChainedHashTable()
 
     simulationChainedHashTable = new SimulationChainedHashTable();
     connect(simulationChainedHashTable->ui->backToMenuButton, SIGNAL(clicked()), this, SLOT(slotBackToMenuFromSimulationChainedHashTable()));
+    connect(simulationChainedHashTable->ui->nextInsertButton, SIGNAL(clicked()), this, SLOT(slotNextInsertedElementFromSimulationChainedHashTable()));
 
     simulationChainedHashTable->show();
 }
@@ -47,13 +48,23 @@ void Controller::slotBackToMenuFromSimulationChainedHashTable()
     mainMenu->show();
 }
 
-void Controller::slotAddElementToData(HashTableElement<int, QString> *element)
+void Controller::slotAddElementToData()
 {
-    data.push_back(element);
+    HashTableElement<int, QString>* element = simulationPresettings->getHashTableElement();
+    addElementToData(element);
+    simulationPresettings->clearInputFields();
 }
 
-HashTableElement<int, QString> *Controller::getElementByIndex(int index)
+void Controller::addElementToData(HashTableElement<int, QString> *element)
 {
-    if (index < 0 || index >= data.size()) return nullptr;
-    return data[index];
+    data.enqueue(element);
+}
+
+void Controller::slotNextInsertedElementFromSimulationChainedHashTable()
+{
+    if (data.empty()){
+        simulationChainedHashTable->ui->curInsertElement->setText("Nothing to insert!");
+        return;
+    }
+    simulationChainedHashTable->curInsertedElement(data.dequeue());
 }

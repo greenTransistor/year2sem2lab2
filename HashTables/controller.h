@@ -5,6 +5,7 @@
 #include "simulationpresettings.h"
 #include "simulationchainedhashtable.h"
 
+#include <QQueue>
 #include <QObject>
 
 class Controller : public QObject{
@@ -18,17 +19,18 @@ private slots:
     void slotCreateSimulationChainedHashTable();
     void slotBackToMenuFromSimulationPresettings();
     void slotBackToMenuFromSimulationChainedHashTable();
-    void slotAddElementToData(HashTableElement<int, QString>* element);
+    void slotAddElementToData();
+    void slotNextInsertedElementFromSimulationChainedHashTable();
 
 private:
     MainMenu* mainMenu;
     SimulationPresettings* simulationPresettings;
     SimulationChainedHashTable* simulationChainedHashTable;
 
-    QVector<HashTableElement<int, QString>*> data;
+    QQueue<HashTableElement<int, QString>*> data;
 
 private: //methods
-    HashTableElement<int, QString>* getElementByIndex(int index);
+    void addElementToData(HashTableElement<int, QString>* element);
 };
 
 #endif // CONTROLLER_H

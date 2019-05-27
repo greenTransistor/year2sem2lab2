@@ -25,6 +25,14 @@ private:
     Ui::SimulationChainedHashTable *ui;
     ChainedHashTable<int, QString> hashTable;
 
+private: //methods
+    void initTable();
+    void curInsertedElement(HashTableElement<int, QString>* element);
+    void updateCurInsertedLabel(HashTableElement<int, QString>* element);
+    QString elementToString(HashTableElement<int, QString>* element);
+    void increaseTableColumns();
+    void shiftList(int row);
+
 public:
     friend Controller;
 };
