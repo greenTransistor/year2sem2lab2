@@ -24,6 +24,9 @@
      <property name="autoFillBackground">
       <bool>false</bool>
      </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
      <property name="editTriggers">
       <set>QAbstractItemView::NoEditTriggers</set>
      </property>
@@ -31,7 +34,7 @@
       <bool>false</bool>
      </property>
      <property name="selectionMode">
-      <enum>QAbstractItemView::NoSelection</enum>
+      <enum>QAbstractItemView::SingleSelection</enum>
      </property>
      <property name="textElideMode">
       <enum>Qt::ElideLeft</enum>
@@ -52,7 +55,7 @@
       <bool>false</bool>
      </attribute>
      <attribute name="horizontalHeaderDefaultSectionSize">
-      <number>180</number>
+      <number>150</number>
      </attribute>
      <attribute name="horizontalHeaderMinimumSectionSize">
       <number>53</number>

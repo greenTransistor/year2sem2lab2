@@ -22,7 +22,7 @@ void SimulationChainedHashTable::initTable()
     ui->tableWidget->setRowCount(HASHTABLE_SIZE);
     ui->tableWidget->setColumnCount(1);
     for (int i = 0; i < HASHTABLE_SIZE; i++)
-        ui->tableWidget->setItem(i,0, new QTableWidgetItem(QString("\\")));
+        ui->tableWidget->setItem(i,0, new QTableWidgetItem(QString("---> \\")));
 }
 
 void SimulationChainedHashTable::curInsertedElement(HashTableElement<int, QString> *element)
@@ -34,11 +34,11 @@ void SimulationChainedHashTable::curInsertedElement(HashTableElement<int, QStrin
     std::pair<int, int>* position = hashTable.popActiveElement();
     int row = position->first;
     increaseTableColumns();
-    qDebug() << "A";
     shiftList(row);
-    qDebug() << "B";
-    ui->tableWidget->setItem(row, 0, new QTableWidgetItem(QString("---> ") + elementToString(element)));
-    qDebug() << "C";
+
+    QTableWidgetItem* item = new QTableWidgetItem(QString("---> ") + elementToString(element));
+    ui->tableWidget->setItem(row, 0, item);
+    ui->tableWidget->setCurrentItem(item);
 }
 
 void SimulationChainedHashTable::updateCurInsertedLabel(HashTableElement<int, QString> *element)
