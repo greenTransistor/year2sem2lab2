@@ -4,6 +4,7 @@ TEST_CASE("ActiveElementsTracker") {
 	int size = 10;
 	int* data1 = new int(42);
 	int* data2 = new int(1337);
+	std::pair<int, int>* activeElement;
 
 	ChainedHashTable<int, int> hashTable(size);
 
@@ -11,19 +12,25 @@ TEST_CASE("ActiveElementsTracker") {
 
 	SECTION("inserting") {
 		hashTable.insert(HashTableElement<int, int>(1, data1));
+		activeElement = hashTable.getNextActiveElement();
 
-		REQUIRE(true);
-		REQUIRE(hashTable.getNextActiveElement()->data == data1);
-		REQUIRE(hashTable.popActiveElement()->data == data1);
+		REQUIRE(activeElement->first == hashTable.getIndex(1));
+		REQUIRE(activeElement->second == 0);
+		REQUIRE(hashTable.popActiveElement() == activeElement);
 		REQUIRE_FALSE(hashTable.activeElementsElementsAvailable());
+
+		delete activeElement;
 	}
 
 	SECTION("lookup") {
 		hashTable.insert(HashTableElement<int, int>(1, data1));
-		hashTable.popActiveElement();
+		activeElement = hashTable.popActiveElement();
 		hashTable.find(1);
 
-		REQUIRE(hashTable.getNextActiveElement()->data == data1);
+		REQUIRE(hashTable.getNextActiveElement()->first == activeElement->first);
+		REQUIRE(hashTable.getNextActiveElement()->second == activeElement->second);
+
+		delete activeElement;
 	}
 
 	SECTION("lookup with collisions") {
@@ -41,12 +48,12 @@ TEST_CASE("ActiveElementsTracker") {
 		trivialHashTable.find(3);
 
 		for (int i = 0; i < 6; i++) {
-			trivialHashTable.popActiveElement();
+			delete trivialHashTable.popActiveElement();
 		}
 
 		REQUIRE(trivialHashTable.activeElementsElementsAvailable());
 
-		trivialHashTable.popActiveElement();
+		delete trivialHashTable.popActiveElement();
 
 		REQUIRE_FALSE(hashTable.activeElementsElementsAvailable());
 	}
