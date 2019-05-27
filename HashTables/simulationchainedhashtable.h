@@ -17,7 +17,7 @@ class SimulationChainedHashTable : public QWidget
 
 public:
 
-    const int HASHTABLE_SIZE = 20;
+    const int HASHTABLE_SIZE = 5;
     explicit SimulationChainedHashTable(QWidget *parent = nullptr);
     ~SimulationChainedHashTable();
 
