@@ -15,6 +15,7 @@ public:
 	virtual ~ActiveElementsTracker() {};
 
 	bool activeElementsElementsAvailable();
+	void clearQueue(bool deleteData = true);
 	HashTableElement<KeyType, DataType>* getNextActiveElement();
 	HashTableElement<KeyType, DataType>* popActiveElement();
 };

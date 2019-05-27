@@ -10,6 +10,11 @@ bool ActiveElementsTracker<KeyType, DataType>::activeElementsElementsAvailable()
 }
 
 template<typename KeyType, typename DataType>
+void ActiveElementsTracker<KeyType, DataType>::clearQueue(bool deleteData) {
+	return this->activeElementsQueue.clear(deleteData);
+}
+
+template<typename KeyType, typename DataType>
 HashTableElement<KeyType, DataType>* ActiveElementsTracker<KeyType, DataType>::getNextActiveElement() {
 	return this->activeElementsQueue.getHeadData();
 }
