@@ -10,7 +10,7 @@
 
 template<typename KeyType, typename DataType>
 ActiveElementsTracker<KeyType, DataType>::~ActiveElementsTracker() {
-	this->clearQueue(true);
+	this->clearActiveElementsQueue(true);
 }
 
 template<typename KeyType, typename DataType>
@@ -19,7 +19,7 @@ bool ActiveElementsTracker<KeyType, DataType>::activeElementsElementsAvailable()
 }
 
 template<typename KeyType, typename DataType>
-void ActiveElementsTracker<KeyType, DataType>::clearQueue(bool deleteData) {
+void ActiveElementsTracker<KeyType, DataType>::clearActiveElementsQueue(bool deleteData) {
 	return this->activeElementsQueue.clear(deleteData);
 }
 

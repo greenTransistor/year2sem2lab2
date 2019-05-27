@@ -17,7 +17,7 @@ public:
 	virtual ~ActiveElementsTracker();
 
 	bool activeElementsElementsAvailable();
-	void clearQueue(bool deleteData = true);
+	void clearActiveElementsQueue(bool deleteData = true);
 	std::pair<int, int>* getNextActiveElement();
 	std::pair<int, int>* popActiveElement();
 };
