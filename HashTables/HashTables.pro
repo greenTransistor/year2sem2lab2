@@ -38,7 +38,8 @@ SOURCES += \
     structures/HashTable/HashTable.cpp \
     structures/HashTable/HashTableElement.cpp \
     structures/HashTable/MutableHashTable.cpp \
-    trackers/ActiveElementsTracker.cpp
+    trackers/ActiveElementsTracker.cpp \
+    simulationchainedhashtable.cpp
 
 HEADERS += \
     mainmenu.h \
@@ -53,11 +54,13 @@ HEADERS += \
     structures/HashTable/HashTable.h \
     structures/HashTable/HashTableElement.h \
     structures/HashTable/MutableHashTable.h \
-    trackers/ActiveElementsTracker.h
+    trackers/ActiveElementsTracker.h \
+    simulationchainedhashtable.h
 
 FORMS += \
     mainmenu.ui \
-    simulationpresettings.ui
+    simulationpresettings.ui \
+    simulationchainedhashtable.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
