@@ -14,7 +14,7 @@ protected:
 	void recordActivity(std::pair<int, int>* element);
 
 public:
-	virtual ~ActiveElementsTracker() {};
+	virtual ~ActiveElementsTracker();
 
 	bool activeElementsElementsAvailable();
 	void clearQueue(bool deleteData = true);

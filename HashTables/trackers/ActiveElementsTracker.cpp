@@ -5,6 +5,11 @@
 template class ActiveElementsTracker<int, QString>;
 
 template<typename KeyType, typename DataType>
+ActiveElementsTracker<KeyType, DataType>::~ActiveElementsTracker() {
+	this->clearQueue(true);
+}
+
+template<typename KeyType, typename DataType>
 bool ActiveElementsTracker<KeyType, DataType>::activeElementsElementsAvailable() {
 	return (!this->activeElementsQueue.isEmpty());
 }
