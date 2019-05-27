@@ -1,8 +1,12 @@
 #include "ActiveElementsTracker.h"
 
-#include <QString>
+#ifndef TEST
+	#include <QString>
+#endif
 
-template class ActiveElementsTracker<int, QString>;
+#ifndef TEST
+	template class ActiveElementsTracker<int, QString>;
+#endif
 
 template<typename KeyType, typename DataType>
 ActiveElementsTracker<KeyType, DataType>::~ActiveElementsTracker() {

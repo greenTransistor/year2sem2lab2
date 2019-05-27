@@ -4,11 +4,15 @@
 
 #include <stdexcept>
 #include <utility>
-#include <QString>
+#ifndef TEST
+	#include <QString>
+#endif
 
 template class LinkedList<int>;
 template class LinkedList<std::pair<int, int> >;
-template class LinkedList<HashTableElement<int, QString>>;
+#ifndef TEST
+	template class LinkedList<HashTableElement<int, QString>>;
+#endif
 
 template<typename DataType>
 LinkedList<DataType>::LinkedList() {

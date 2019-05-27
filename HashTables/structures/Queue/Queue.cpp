@@ -3,7 +3,6 @@
 #include "../HashTable/HashTableElement.h"
 
 #include <utility>
-#include <QString>
 
 template class Queue<int>;
 template class Queue<std::pair<int, int> >;

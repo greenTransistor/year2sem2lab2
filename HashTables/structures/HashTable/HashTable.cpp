@@ -1,8 +1,10 @@
 #include "HashTable.h"
 
-#include <QString>
+#ifndef TEST
+	#include <QString>
 
-template class HashTable<int, QString>;
+	template class HashTable<int, QString>;
+#endif
 
 template<typename KeyType, typename DataType>
 int HashTable<KeyType, DataType>::getIndex(KeyType key) {

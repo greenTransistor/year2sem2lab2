@@ -3,11 +3,15 @@
 #include "../HashTable/HashTableElement.h"
 
 #include <utility>
-#include <QString>
+#ifndef TEST
+	#include <QString>
+#endif
 
 template class LinkedListElement<int>;
 template class LinkedListElement<std::pair<int, int> >;
-template class LinkedListElement<HashTableElement<int, QString>>;
+#ifndef TEST
+	template class LinkedListElement<HashTableElement<int, QString>>;
+#endif
 
 template<typename DataType>
 LinkedListElement<DataType>::LinkedListElement(DataType* data, LinkedListElement<DataType>* prev, LinkedListElement<DataType>* next) {

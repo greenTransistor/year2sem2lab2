@@ -1,6 +1,10 @@
 #include "HashTableElement.h"
 
-#include <QString>
+#ifndef TEST
+	#include <QString>
+
+	template class HashTableElement<int, QString>;
+#endif
 
 template<typename KeyType, typename DataType>
 HashTableElement<KeyType, DataType>::HashTableElement(KeyType key, DataType* data) {
@@ -12,5 +16,3 @@ template<typename KeyType, typename DataType>
 HashTableElement<KeyType, DataType>* HashTableElement<KeyType, DataType>::clone() {
 	return new HashTableElement<KeyType, DataType>(this->key, this->data);
 }
-
-template class HashTableElement<int, QString>;

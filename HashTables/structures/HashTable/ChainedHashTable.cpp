@@ -3,7 +3,11 @@
 #include <utility>
 
 #include <stdexcept>
-#include <QString>
+#ifndef TEST
+	#include <QString>
+
+	template class ChainedHashTable<int, QString>;
+#endif
 
 template<typename KeyType, typename DataType>
 ChainedHashTable<KeyType, DataType>::ChainedHashTable(int size) {
@@ -104,5 +108,3 @@ void ChainedHashTable<KeyType, DataType>::remove(KeyType key) {
 
 	this->buckets[this->getIndex(key)].removeElement(element);
 }
-
-template class ChainedHashTable<int, QString>;
