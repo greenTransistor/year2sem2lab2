@@ -58,6 +58,13 @@ TEST_CASE("ActiveElementsTracker") {
 		REQUIRE_FALSE(hashTable.activeElementsElementsAvailable());
 	}
 
+	SECTION("clearing") {
+		hashTable.insert(HashTableElement<int, int>(1, data1));
+		hashTable.clearActiveElementsQueue();
+
+		REQUIRE_FALSE(hashTable.activeElementsElementsAvailable());
+	}
+
 	SECTION("errors") {
 		REQUIRE_THROWS_AS(hashTable.getNextActiveElement(), std::logic_error);
 		REQUIRE_THROWS_AS(hashTable.popActiveElement(), std::logic_error);
