@@ -2,9 +2,11 @@
 
 #include "../HashTable/HashTableElement.h"
 
+#include <utility>
 #include <QString>
 
 template class LinkedListElement<int>;
+template class LinkedListElement<std::pair<int, int> >;
 template class LinkedListElement<HashTableElement<int, QString>>;
 
 template<typename DataType>

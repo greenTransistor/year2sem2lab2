@@ -15,16 +15,16 @@ void ActiveElementsTracker<KeyType, DataType>::clearQueue(bool deleteData) {
 }
 
 template<typename KeyType, typename DataType>
-HashTableElement<KeyType, DataType>* ActiveElementsTracker<KeyType, DataType>::getNextActiveElement() {
+std::pair<int, int>* ActiveElementsTracker<KeyType, DataType>::getNextActiveElement() {
 	return this->activeElementsQueue.getHeadData();
 }
 
 template<typename KeyType, typename DataType>
-HashTableElement<KeyType, DataType>* ActiveElementsTracker<KeyType, DataType>::popActiveElement() {
+std::pair<int, int>* ActiveElementsTracker<KeyType, DataType>::popActiveElement() {
 	return this->activeElementsQueue.dequeue();
 }
 
 template<typename KeyType, typename DataType>
-void ActiveElementsTracker<KeyType, DataType>::recordActivity(HashTableElement<KeyType, DataType>* element) {
+void ActiveElementsTracker<KeyType, DataType>::recordActivity(std::pair<int, int>* element) {
 	this->activeElementsQueue.enqueue(element);
 }

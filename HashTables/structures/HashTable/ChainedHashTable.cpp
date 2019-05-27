@@ -1,5 +1,7 @@
 #include "ChainedHashTable.h"
 
+#include <utility>
+
 #include <stdexcept>
 #include <QString>
 
@@ -56,20 +58,22 @@ DataType* ChainedHashTable<KeyType, DataType>::find(KeyType key) {
 
 template<typename KeyType, typename DataType>
 LinkedListElement<HashTableElement<KeyType, DataType> >* ChainedHashTable<KeyType, DataType>::findListElement(KeyType key) {
-	int index = this->getIndex(key);
-	if (this->buckets[index].isEmpty()) {
+	int bucketIndex = this->getIndex(key);
+	if (this->buckets[bucketIndex].isEmpty()) {
 		return nullptr;
 	}
 
-	LinkedListElement<HashTableElement<KeyType, DataType> >* currentElement = this->buckets[index].getFirstElement();
-	LinkedListElement<HashTableElement<KeyType, DataType> >* head = this->buckets[index].getHead();
+	LinkedListElement<HashTableElement<KeyType, DataType> >* currentElement = this->buckets[bucketIndex].getFirstElement();
+	LinkedListElement<HashTableElement<KeyType, DataType> >* head = this->buckets[bucketIndex].getHead();
+	int currentElementIndex = 0;
 
 	while (currentElement != head) {
-		this->recordActivity(currentElement->data);
+		this->recordActivity(new std::pair<int, int>(bucketIndex, currentElementIndex));
 		if (currentElement->data->key == key) {
 			return currentElement;
 		}
 		currentElement = currentElement->next;
+		currentElementIndex++;
 	}
 
 	return nullptr;
@@ -84,9 +88,10 @@ void ChainedHashTable<KeyType, DataType>::initWithSize(int size) {
 template<typename KeyType, typename DataType>
 void ChainedHashTable<KeyType, DataType>::insert(HashTableElement<KeyType, DataType> element) {
 	HashTableElement<KeyType, DataType>* elementToInsert = element.clone();
+	int bucketIndex = this->getIndex(element.key);
 
-	this->buckets[this->getIndex(element.key)].insertBegin(elementToInsert);
-	this->recordActivity(elementToInsert);
+	this->buckets[bucketIndex].insertBegin(elementToInsert);
+	this->recordActivity(new std::pair<int, int>(bucketIndex, 0));
 }
 
 template<typename KeyType, typename DataType>
