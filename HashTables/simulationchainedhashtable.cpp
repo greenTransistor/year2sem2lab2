@@ -48,7 +48,7 @@ void SimulationChainedHashTable::updateCurInsertedLabel(HashTableElement<int, QS
 
 QString SimulationChainedHashTable::elementToString(HashTableElement<int, QString> *element)
 {
-    return QString::number(element->key) + "| " + element->data;
+    return QString::number(element->key) + "| " + *element->data;
 }
 
 void SimulationChainedHashTable::increaseTableColumns()
