@@ -87,6 +87,7 @@ TEST_CASE("ChainedHashTable") {
 		}
 	}
 
-	delete data2;
-	delete data1;
+	//After this data1 and data2 should be freed, test with valgrind
+	ChainedHashTable<int, int> hashTableForFreeing(elements, 2);
+	hashTableForFreeing.free();
 }

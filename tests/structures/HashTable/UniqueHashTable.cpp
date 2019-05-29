@@ -60,6 +60,10 @@ TEST_CASE("UniqueHashTable") {
 		}
 	}
 
-	delete data2;
-	delete data1;
+	//After this data1 and data2 should be freed, test with valgrind
+	UniqueHashTable<int, int> hashTableForFreeing1(elements, size);
+	UniqueHashTable<int, int> hashTableForFreeing2(size);
+	hashTableForFreeing2.insert(HashTableElement<int, int>(2, data2));
+	hashTableForFreeing2.free();
+	hashTableForFreeing1.free();
 }
