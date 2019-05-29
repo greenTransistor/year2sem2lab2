@@ -4,3 +4,4 @@
 #include "../../../HashTables/structures/HashTable/MutableHashTable.cpp"
 
 #include "ChainedHashTable.cpp"
+#include "UniqueHashTable.cpp"

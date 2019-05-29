@@ -15,6 +15,7 @@ protected:
 
 public:
 	static const int INDEX_IN_EMPTY_BUCKET;
+	static const int INDEX_OF_ONLY_ELEMENT;
 
 	virtual ~ActiveElementsTracker();
 
