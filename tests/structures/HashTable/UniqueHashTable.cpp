@@ -21,6 +21,7 @@ TEST_CASE("UniqueHashTable") {
 			}
 		}
 
+		REQUIRE(hashTable.find(1) == data1);
 		REQUIRE(noOtherElementsFound);
 	}
 
