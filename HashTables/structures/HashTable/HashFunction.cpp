@@ -1,5 +1,6 @@
 #include "HashFunction.h"
 
+#include <algorithm>
 #include <cstdlib>
 
 uint32_t HashFunction::stringToInt(std::string data) {
@@ -15,13 +16,25 @@ uint32_t HashFunction::stringToInt(std::string data) {
 }
 
 HashFunction::HashFunction() {
-	this->a = (rand() % (HashFunction::PRIME - 1) + 1);
-	this->b = (rand() % HashFunction::PRIME);
+	this->setRandomCoefficients();
+}
+
+HashFunction::HashFunction(uint32_t hashTableSize) {
+	this->setRandomCoefficients();
+	this->a += std::__gcd(this->a, hashTableSize) - 1;
 }
 
 HashFunction::HashFunction(uint32_t a, uint32_t b) {
 	this->a = a;
 	this->b = b;
+}
+
+uint32_t HashFunction::generateA() {
+	return (rand() % (HashFunction::PRIME - 1) + 1);
+}
+
+uint32_t HashFunction::generateB() {
+	return (rand() % HashFunction::PRIME);
 }
 
 uint32_t HashFunction::getValue(uint32_t data) {
@@ -32,4 +45,9 @@ uint32_t HashFunction::getValue(uint32_t data) {
 
 uint32_t HashFunction::getValue(std::string data) {
 	return this->getValue(HashFunction::stringToInt(data));
+}
+
+void HashFunction::setRandomCoefficients() {
+	this->a = HashFunction::generateA();
+	this->b = HashFunction::generateB();
 }

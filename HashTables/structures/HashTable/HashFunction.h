@@ -10,9 +10,13 @@ private:
 	uint32_t b;
 
 	static uint32_t stringToInt(std::string data);
+	static uint32_t generateA();
+	static uint32_t generateB();
+	void setRandomCoefficients();
 
 public:
 	HashFunction();
+	HashFunction(uint32_t hashTableSize);
 	HashFunction(uint32_t a, uint32_t b);
 
 	uint32_t getValue(uint32_t data);
