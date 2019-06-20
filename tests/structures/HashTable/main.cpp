@@ -5,3 +5,4 @@
 
 #include "ChainedHashTable.cpp"
 #include "UniqueHashTable.cpp"
+#include "OpenAdressingHashTable.cpp"
