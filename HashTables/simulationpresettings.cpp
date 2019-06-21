@@ -1,6 +1,20 @@
 #include "simulationpresettings.h"
 #include "ui_simulationpresettings.h"
 
+QStringList SimulationPresettings::possibleData = {
+    "apple",
+    "word",
+    "time",
+    "laptop",
+    "builder",
+    "factory",
+    "some data",
+    "random text",
+    "problem",
+    "note",
+    "text"
+};
+
 SimulationPresettings::SimulationPresettings(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::SimulationPresettings)
@@ -23,8 +37,16 @@ void SimulationPresettings::slotAddElement()
 
 HashTableElement<int, QString> *SimulationPresettings::getHashTableElement()
 {
-    int key = ui->keyInput->text().toInt();
-    QString* data = new QString(ui->dataInput->text());
+    int key;
+    QString* data;
+    if (ui->needRandomRadioButton->isChecked()){
+        key = rand() % 100;
+        data = new QString(possibleData[rand() % possibleData.size()]);
+    }
+    else{
+        key = ui->keyInput->text().toInt();
+        data = new QString(ui->dataInput->text());
+    }
 
     return new HashTableElement<int, QString>(key, data);
 }

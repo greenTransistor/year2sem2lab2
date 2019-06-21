@@ -52,13 +52,16 @@
       <bool>false</bool>
      </attribute>
      <attribute name="horizontalHeaderCascadingSectionResizes">
-      <bool>false</bool>
+      <bool>true</bool>
      </attribute>
      <attribute name="horizontalHeaderDefaultSectionSize">
-      <number>150</number>
+      <number>170</number>
      </attribute>
      <attribute name="horizontalHeaderMinimumSectionSize">
       <number>53</number>
+     </attribute>
+     <attribute name="verticalHeaderCascadingSectionResizes">
+      <bool>true</bool>
      </attribute>
      <attribute name="verticalHeaderHighlightSections">
       <bool>true</bool>

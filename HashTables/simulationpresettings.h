@@ -24,6 +24,7 @@ private slots:
 
 private:
     Ui::SimulationPresettings *ui;
+    static QStringList possibleData;
 
 private: //methods
     HashTableElement<int, QString>* getHashTableElement();
