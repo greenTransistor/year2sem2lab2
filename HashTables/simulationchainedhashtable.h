@@ -2,8 +2,17 @@
 #define SIMULATIONCHAINEDHASHTABLE_H
 
 #include "structures/HashTable/ChainedHashTable.h"
+#include "structures/HashTable/OpenAdressingHashTable.h"
+#include "structures/HashTable/probingStrategies/LinearProbingStrategy.h"
+#include "structures/HashTable/probingStrategies/SecondHashProbingStrategy.h"
 
 #include <QWidget>
+
+enum Entity {
+    Chained,
+    OpenAdressingLinear,
+    OpenAdressingSecondary
+};
 
 namespace Ui {
 class SimulationChainedHashTable;
@@ -17,13 +26,14 @@ class SimulationChainedHashTable : public QWidget
 
 public:
 
-    const int HASHTABLE_SIZE = 8;
-    explicit SimulationChainedHashTable(QWidget *parent = nullptr);
+//    const int HASHTABLE_SIZE = 8;
+    explicit SimulationChainedHashTable(Entity entity, QWidget *parent = nullptr);
     ~SimulationChainedHashTable();
 
 private:
     Ui::SimulationChainedHashTable *ui;
-    ChainedHashTable<int, QString> hashTable;
+    MutableHashTable<int, QString>* hashTable;
+    int tableSize;
 
 public slots:
     void slotOnNextFindButton();

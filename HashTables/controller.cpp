@@ -28,8 +28,9 @@ void Controller::slotCreateSimulationPresettings()
 void Controller::slotCreateSimulationChainedHashTable()
 {
     simulationPresettings->hide();
+    Entity entity = Entity(simulationPresettings->ui->hashTableTypeComboBox->currentIndex());
 
-    simulationChainedHashTable = new SimulationChainedHashTable();
+    simulationChainedHashTable = new SimulationChainedHashTable(entity);
     connect(simulationChainedHashTable->ui->backToMenuButton, SIGNAL(clicked()), this, SLOT(slotBackToMenuFromSimulationChainedHashTable()));
     connect(simulationChainedHashTable->ui->nextInsertButton, SIGNAL(clicked()), this, SLOT(slotNextInsertedElementFromSimulationChainedHashTable()));
 

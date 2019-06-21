@@ -54,12 +54,12 @@
        </item>
        <item>
         <property name="text">
-         <string>Open adressing</string>
+         <string>Open adressing (Linear strategy)</string>
         </property>
        </item>
        <item>
         <property name="text">
-         <string>Perfect hash</string>
+         <string>Open adressing (SecondHash strategy)</string>
         </property>
        </item>
       </widget>

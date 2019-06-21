@@ -16,6 +16,6 @@ public:
 	virtual ~HashTable() {}
 	virtual void free() {}
 
-	virtual DataType* find(KeyType key) {return nullptr;}
+    virtual DataType* find(KeyType key) = 0;
 	int getIndex(KeyType key);
 };

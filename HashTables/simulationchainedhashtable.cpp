@@ -3,11 +3,17 @@
 
 #include <QDebug>
 
-SimulationChainedHashTable::SimulationChainedHashTable(QWidget *parent) :
+SimulationChainedHashTable::SimulationChainedHashTable(Entity entity, QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::SimulationChainedHashTable),
-    hashTable(ChainedHashTable<int, QString>(HASHTABLE_SIZE))
+    ui(new Ui::SimulationChainedHashTable)
 {
+    if (entity == Chained) tableSize = 8;
+    else tableSize = 20;
+
+    if (entity == Chained) hashTable = new ChainedHashTable<int, QString>(tableSize);
+    else if (entity == OpenAdressingLinear) hashTable = new OpenAdressingHashTable<int, QString>(new LinearProbingStrategy(), tableSize);
+    else if (entity == OpenAdressingSecondary) hashTable = new OpenAdressingHashTable<int, QString>(new SecondHashProbingStrategy(tableSize), tableSize);
+
     ui->setupUi(this);
     initTable();
 }
@@ -20,7 +26,7 @@ SimulationChainedHashTable::~SimulationChainedHashTable()
 void SimulationChainedHashTable::findElement()
 {
     int key = ui->keyToFindInput->text().toInt();
-    hashTable.find(key);
+    hashTable->find(key);
 }
 
 void SimulationChainedHashTable::slotOnNextFindButton()
@@ -29,26 +35,26 @@ void SimulationChainedHashTable::slotOnNextFindButton()
         findElement();
         ui->keyToFindInput->setText("");
     }
-    if (!hashTable.activeElementsElementsAvailable()) return;
-    std::pair<int, int>* position = hashTable.popActiveElement();
+    if (!hashTable->activeElementsElementsAvailable()) return;
+    std::pair<int, int>* position = hashTable->popActiveElement();
     ui->tableWidget->setCurrentCell(position->first, position->second);
 }
 
 void SimulationChainedHashTable::initTable()
 {
-    ui->tableWidget->setRowCount(HASHTABLE_SIZE);
+    ui->tableWidget->setRowCount(tableSize);
     ui->tableWidget->setColumnCount(1);
-    for (int i = 0; i < HASHTABLE_SIZE; i++)
-        ui->tableWidget->setItem(i,0, new QTableWidgetItem(QString("---> \\")));
+    for (int i = 0; i < tableSize; i++)
+        ui->tableWidget->setItem(i,0, new QTableWidgetItem(QString("--> \\")));
 }
 
 void SimulationChainedHashTable::curInsertedElement(HashTableElement<int, QString> *element)
 {
     updateCurInsertedLabel(element);
 
-    hashTable.insert(*element);
+    hashTable->insert(*element);
 
-    std::pair<int, int>* position = hashTable.popActiveElement();
+    std::pair<int, int>* position = hashTable->popActiveElement();
     int row = position->first;
     increaseTableColumns();
     shiftList(row);
@@ -65,7 +71,7 @@ void SimulationChainedHashTable::updateCurInsertedLabel(HashTableElement<int, QS
 
 QString SimulationChainedHashTable::elementToString(HashTableElement<int, QString> *element)
 {
-    return QString::number(element->key) + "| " + *element->data;
+    return QString::number(element->key) + " | " + *element->data;
 }
 
 void SimulationChainedHashTable::increaseTableColumns()

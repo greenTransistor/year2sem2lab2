@@ -18,7 +18,7 @@ public:
 	~ChainedHashTable();
 	void free();
 
-	DataType* find(KeyType key);
-	void insert(HashTableElement<KeyType, DataType> element);
+    DataType* find(KeyType key) override;
+    void insert(HashTableElement<KeyType, DataType> element) override;
 	void remove(KeyType key);
 };

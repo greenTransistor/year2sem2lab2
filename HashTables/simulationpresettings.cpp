@@ -8,11 +8,13 @@ QStringList SimulationPresettings::possibleData = {
     "laptop",
     "builder",
     "factory",
-    "some data",
+    "data",
     "random",
     "problem",
     "note",
-    "text"
+    "text",
+    "some",
+    "gold"
 };
 
 SimulationPresettings::SimulationPresettings(QWidget *parent) :

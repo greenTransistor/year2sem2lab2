@@ -10,5 +10,5 @@ public:
 	virtual ~MutableHashTable() {}
 	virtual void free() {}
 
-	virtual void insert(HashTableElement<KeyType, DataType> element) {}
+    virtual void insert(HashTableElement<KeyType, DataType> element) = 0;
 };
