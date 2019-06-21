@@ -1,4 +1,5 @@
 #include "SecondHashProbingStrategy.h"
+#include "../HashFunction.h"
 
 SecondHashProbingStrategy::SecondHashProbingStrategy(int hashTableSize) {
 	this->hashFunction = HashFunction(hashTableSize);

@@ -39,7 +39,12 @@ SOURCES += \
     structures/HashTable/HashTableElement.cpp \
     structures/HashTable/MutableHashTable.cpp \
     trackers/ActiveElementsTracker.cpp \
-    simulationchainedhashtable.cpp
+    simulationchainedhashtable.cpp \
+    structures/HashTable/probingStrategies/LinearProbingStrategy.cpp \
+    structures/HashTable/probingStrategies/ProbingStrategy.cpp \
+    structures/HashTable/probingStrategies/SecondHashProbingStrategy.cpp \
+    structures/HashTable/OpenAdressingHashTable.cpp \
+    structures/HashTable/UniqueHashTable.cpp
 
 HEADERS += \
     mainmenu.h \
@@ -55,7 +60,12 @@ HEADERS += \
     structures/HashTable/HashTableElement.h \
     structures/HashTable/MutableHashTable.h \
     trackers/ActiveElementsTracker.h \
-    simulationchainedhashtable.h
+    simulationchainedhashtable.h \
+    structures/HashTable/probingStrategies/LinearProbingStrategy.h \
+    structures/HashTable/probingStrategies/ProbingStrategy.h \
+    structures/HashTable/probingStrategies/SecondHashProbingStrategy.h \
+    structures/HashTable/OpenAdressingHashTable.h \
+    structures/HashTable/UniqueHashTable.h
 
 FORMS += \
     mainmenu.ui \
