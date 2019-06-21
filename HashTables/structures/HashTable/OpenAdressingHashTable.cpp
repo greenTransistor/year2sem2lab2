@@ -46,7 +46,6 @@ void OpenAdressingHashTable<KeyType, DataType>::free() {
 	}
 }
 
-
 template<typename KeyType, typename DataType>
 bool OpenAdressingHashTable<KeyType, DataType>::canInsert(KeyType key) {
 	return (this->elementsCount < this->size);
@@ -54,17 +53,21 @@ bool OpenAdressingHashTable<KeyType, DataType>::canInsert(KeyType key) {
 
 template<typename KeyType, typename DataType>
 DataType* OpenAdressingHashTable<KeyType, DataType>::find(KeyType key) {
-	int bucketIndex = this->getIndex(key);
-	HashTableElement<KeyType, DataType>* element = this->buckets[bucketIndex];
-	if (element == nullptr) {
-		this->recordActivity(new std::pair<int, int>(bucketIndex, this->INDEX_IN_EMPTY_BUCKET));
-		return nullptr;
+	int startIndex = this->getIndex(key);
+	int bucketIndex = startIndex;
+	int attemptNumber = 0;
+
+	while (this->buckets[bucketIndex] != nullptr && this->buckets[bucketIndex]->key != key) {
+		this->recordActivity(new std::pair<int, int>(bucketIndex, this->INDEX_OF_ONLY_ELEMENT));
+		attemptNumber++;
+		bucketIndex = (startIndex + this->probingStrategy->getOffset(attemptNumber)) % this->size;
 	}
 
-	this->recordActivity(new std::pair<int, int>(bucketIndex, this->INDEX_OF_ONLY_ELEMENT));
-	if (element->key == key) {
-		return element->data;
+	if (this->buckets[bucketIndex]->key == key) {
+		this->recordActivity(new std::pair<int, int>(bucketIndex, this->INDEX_OF_ONLY_ELEMENT));
+		return this->buckets[bucketIndex]->data;
 	} else {
+		this->recordActivity(new std::pair<int, int>(bucketIndex, this->INDEX_IN_EMPTY_BUCKET));
 		return nullptr;
 	}
 }
