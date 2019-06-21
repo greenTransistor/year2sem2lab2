@@ -34,6 +34,7 @@ private:
     Ui::SimulationChainedHashTable *ui;
     MutableHashTable<int, QString>* hashTable;
     int tableSize;
+    Entity entity;
 
 public slots:
     void slotOnNextFindButton();

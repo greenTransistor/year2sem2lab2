@@ -5,7 +5,8 @@
 
 SimulationChainedHashTable::SimulationChainedHashTable(Entity entity, QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::SimulationChainedHashTable)
+    ui(new Ui::SimulationChainedHashTable),
+    entity(entity)
 {
     if (entity == Chained) tableSize = 8;
     else tableSize = 20;
@@ -77,6 +78,8 @@ QString SimulationChainedHashTable::elementToString(HashTableElement<int, QStrin
 void SimulationChainedHashTable::increaseTableColumns()
 {
     int curColumnsNumber = ui->tableWidget->columnCount();
+    if (entity != Chained && curColumnsNumber == 2) return;
+
     ui->tableWidget->setColumnCount(curColumnsNumber + 1);
 }
 
