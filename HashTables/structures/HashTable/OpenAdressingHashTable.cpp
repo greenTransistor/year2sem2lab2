@@ -63,12 +63,12 @@ DataType* OpenAdressingHashTable<KeyType, DataType>::find(KeyType key) {
 		bucketIndex = (startIndex + this->probingStrategy->getOffset(attemptNumber)) % this->size;
 	}
 
-	if (this->buckets[bucketIndex]->key == key) {
-		this->recordActivity(new std::pair<int, int>(bucketIndex, this->INDEX_OF_ONLY_ELEMENT));
-		return this->buckets[bucketIndex]->data;
-	} else {
+	if (this->buckets[bucketIndex] == nullptr) {
 		this->recordActivity(new std::pair<int, int>(bucketIndex, this->INDEX_IN_EMPTY_BUCKET));
 		return nullptr;
+	} else {
+		this->recordActivity(new std::pair<int, int>(bucketIndex, this->INDEX_OF_ONLY_ELEMENT));
+		return this->buckets[bucketIndex]->data;
 	}
 }
 
