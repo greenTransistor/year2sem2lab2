@@ -17,7 +17,7 @@ class SimulationChainedHashTable : public QWidget
 
 public:
 
-    const int HASHTABLE_SIZE = 5;
+    const int HASHTABLE_SIZE = 8;
     explicit SimulationChainedHashTable(QWidget *parent = nullptr);
     ~SimulationChainedHashTable();
 
@@ -25,8 +25,12 @@ private:
     Ui::SimulationChainedHashTable *ui;
     ChainedHashTable<int, QString> hashTable;
 
+public slots:
+    void slotOnNextFindButton();
+
 private: //methods
     void initTable();
+    void findElement();
     void curInsertedElement(HashTableElement<int, QString>* element);
     void updateCurInsertedLabel(HashTableElement<int, QString>* element);
     QString elementToString(HashTableElement<int, QString>* element);

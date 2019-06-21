@@ -9,7 +9,7 @@ QStringList SimulationPresettings::possibleData = {
     "builder",
     "factory",
     "some data",
-    "random text",
+    "random",
     "problem",
     "note",
     "text"

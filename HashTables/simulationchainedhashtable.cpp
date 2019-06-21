@@ -17,6 +17,23 @@ SimulationChainedHashTable::~SimulationChainedHashTable()
     delete ui;
 }
 
+void SimulationChainedHashTable::findElement()
+{
+    int key = ui->keyToFindInput->text().toInt();
+    hashTable.find(key);
+}
+
+void SimulationChainedHashTable::slotOnNextFindButton()
+{
+    if (ui->keyToFindInput->text() != ""){
+        findElement();
+        ui->keyToFindInput->setText("");
+    }
+    if (!hashTable.activeElementsElementsAvailable()) return;
+    std::pair<int, int>* position = hashTable.popActiveElement();
+    ui->tableWidget->setCurrentCell(position->first, position->second);
+}
+
 void SimulationChainedHashTable::initTable()
 {
     ui->tableWidget->setRowCount(HASHTABLE_SIZE);
@@ -36,7 +53,7 @@ void SimulationChainedHashTable::curInsertedElement(HashTableElement<int, QStrin
     increaseTableColumns();
     shiftList(row);
 
-    QTableWidgetItem* item = new QTableWidgetItem(QString("---> ") + elementToString(element));
+    QTableWidgetItem* item = new QTableWidgetItem(QString("--> ") + elementToString(element));
     ui->tableWidget->setItem(row, 0, item);
     ui->tableWidget->setCurrentItem(item);
 }

@@ -239,5 +239,25 @@
   </layout>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>nextFindButton</sender>
+   <signal>clicked()</signal>
+   <receiver>SimulationChainedHashTable</receiver>
+   <slot>slotOnNextFindButton()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>609</x>
+     <y>437</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>569</x>
+     <y>459</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>slotOnNextFindButton()</slot>
+ </slots>
 </ui>
